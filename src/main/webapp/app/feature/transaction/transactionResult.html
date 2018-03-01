@@ -1,0 +1,23 @@
+<div ng-controller="transactionResult_Controller as resultCtrl">
+
+    <div>
+
+
+        <div >
+            <table class="table">
+                <tr>
+                    <th>{{'TransactionID' | uppercase}}</th>
+                    <th>{{'Description' | uppercase}}</th>
+                </tr>
+                <tr >
+                    <td>{{resultCtrl.list.accountNumber}}</td>
+                    <td>{{resultCtrl.list.testValue}} </td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+    </div>
+</div>

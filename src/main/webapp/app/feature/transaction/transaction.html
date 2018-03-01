@@ -1,0 +1,26 @@
+<div ng-controller="transactionController as transactionCtrl">
+
+<div>
+
+	<select>
+	<option ng-repeat="x in transactionCtrl.accounts" ng-click="transactionCtrl.setacc(x.accountNumber)">{{x.accountNumber}} </option>
+	</select>
+
+	<div ng-hide="transactionCtrl.isHidden">
+	<table class="table">
+		<tr>
+			<th>{{'account_number' | uppercase}}</th>
+			<th>{{'transactionID' | uppercase}}</th>
+		</tr>
+		<tr ng-repeat="account in transactionCtrl.transactionList | filter:transactionCtrl.account">
+			<td>{{account.accountNumber}}</td>
+			<td>{{account.transactionID}} <button ng-click="transactionCtrl.selectedTrans(account.transactionID)"> Get transaction list</button> </td>
+		</tr>
+
+	</table>
+
+	</div>
+
+
+	</div>
+</div>
