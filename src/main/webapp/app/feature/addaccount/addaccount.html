@@ -1,0 +1,27 @@
+
+<div class="panel panel-default" ng-controller="AddAccountController as addaccountCtrl">
+        <div class="panel-heading">Add Accounts page</div>
+        <div class="panel-body">
+
+
+
+        <div>
+            <h3><span>Add Account Here</span></h3>
+
+  	<div class="form-group">
+    	<label>First Name:</label>
+    	<input ng-model="addaccountCtrl.fName">
+ 	</div>
+  	<div class="form-group">
+    	<label>Last Name:</label>
+    	<input ng-model="addaccountCtrl.lName">
+  	</div>
+  	  	<div class="form-group">
+    	<label>Account Number: </label>
+    	<input ng-model="addaccountCtrl.accNumber">
+  	</div>
+
+  	<button ng-click="addaccountCtrl.add()">Submit</button>
+
+    </div>
+</div>

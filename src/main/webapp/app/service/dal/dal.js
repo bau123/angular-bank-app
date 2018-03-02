@@ -9,6 +9,7 @@
 
                 GET: function (apiPath) {
                     var deferred = $q.defer();
+                    $log.log("Dal get")
                     $http.get(apiPath).then(function (result) {
                         deferred.resolve(result.data);
                     }, function (e) {
@@ -59,9 +60,17 @@
 
                 DELETE: function (apiPath, itemToDelete) {
                     var deferred = $q.defer();
-                    $http.delete(apiPath + itemToDelete.id).then(function () {
+                    $log.log("Dal Delete");
+                    $log.log(itemToDelete);
+                    $log.log(apiPath);
+                    $log.log(itemToDelete.id);
+                    $http.delete("http://localhost:8080/customer-app/rest/account/json/" + itemToDelete.id).then(function () {
+                   
+                    $log.log("Dal Delete = Success");
                         deferred.resolve();
                     }, function (e) {
+                    $log.log("Dal Delete = fail");
+
                         deferred.reject(e);
                     });
                     return deferred.promise;
