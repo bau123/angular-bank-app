@@ -10,13 +10,15 @@
                     <th>{{'first_name' | uppercase}}</th>
                     <th>{{'surname' | uppercase}}</th>
                     <th>{{'account_number' | uppercase}}</th>
-                    <th> Update / Delete </th>
+                    <th> Delete </th>
+                    <th> Update </th>
                 </tr>
                 <tr ng-repeat="account in accountCtrl.accounts">
                     <td>{{account.firstName}}</td>
                     <td>{{account.secondName}}</td>
                     <td>{{account.accountNumber}}</td>
                     <td> <button ng-click="accountCtrl.deleteAcc(account)"> Delete</button></td>
+                    <td> <button ng-click="accountCtrl.updateAccount(account.firstName,account.secondName,account.accountNumber,account.id)"> Update</button></td>
                 </tr>
             </table>
         </div>

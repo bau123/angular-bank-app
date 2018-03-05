@@ -2,7 +2,7 @@
 
 (function() {
 
-    var AddAccountController =  function(accountService, $log) {
+    var AddAccountController =  function(accountService, $log, $state) {
         
         var vm = this;
 		vm.fName;
@@ -12,12 +12,14 @@
         vm.add = function(){
         	var obj = {
         		firstName : vm.fName,
-        		lastName : vm.lName,
+        		secondName : vm.lName,
         		accountNumber : vm.accNumber
         	}
         	accountService.addAccount(obj);
         	$log.log(obj);
+            $state.go('account');
+
         }
 };
- angular.module('accountApp').controller('AddAccountController', ['accountService','$log', AddAccountController]);
+ angular.module('accountApp').controller('AddAccountController', ['accountService','$log','$state' ,AddAccountController]);
 }());

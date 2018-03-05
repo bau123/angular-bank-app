@@ -56,6 +56,11 @@ public class AccountMapRepository implements AccountRepository {
 		return "{\"message\": \"accout sucessfully removed\"}";
 	}
 
+	@Override
+	public String updateAccount(String account) {
+		return null;
+	}
+
 	private void initAccountMap() {
 		LOGGER.info("AccountMapRepository + initAccountMap");
 		Set<Transaction> transactions = new HashSet<>();

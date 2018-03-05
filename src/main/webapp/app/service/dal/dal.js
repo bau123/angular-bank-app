@@ -19,6 +19,7 @@
                 },
 
                 POST: function (apiPath, itemToSave) {
+                    $log.log(apiPath + " - " + itemToSave);
                     var deferred = $q.defer();
                     $http(
                         {

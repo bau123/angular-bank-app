@@ -16,8 +16,12 @@
         	return accountDal.deleteAccount(account);
         };
         this.addAccount = function(account){
-            $log.log("AccountService : add account");
+            $log.log("AccountService: add account");
             return accountDal.saveAccount(account);
+        }
+        this.changeAccount = function(account){
+            $log.log("AccountService: account " + account);
+            return accountDal.updateAccount(account);
         }
         
     }

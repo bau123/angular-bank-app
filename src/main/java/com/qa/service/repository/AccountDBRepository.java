@@ -39,9 +39,9 @@ public class AccountDBRepository implements AccountRepository {
 
 	@Override
 	@Transactional(REQUIRED)
-	public String createAccount(String accout) {
+	public String createAccount(String account) {
 		LOGGER.info("AccountDBRepository createAccount");
-		Account anAccount = util.getObjectForJSON(accout, Account.class);
+		Account anAccount = util.getObjectForJSON(account, Account.class);
 		manager.persist(anAccount);
 		return "{\"message\": \"account has been sucessfully added\"}";
 	}
@@ -57,6 +57,23 @@ public class AccountDBRepository implements AccountRepository {
 		}
 		return "{\"message\": \"account not found\"}";
 
+	}
+
+	@Override
+	@Transactional(REQUIRED)
+	public String updateAccount(String account) {
+		LOGGER.info("AccountDBRepository updateAccount");
+		Account updateAcc = util.getObjectForJSON(account, Account.class);
+		Long id = updateAcc.getId();
+		Account accountInDB = findAccount(id);
+		if (accountInDB != null) {
+			accountInDB.setFirstName(updateAcc.getFirstName());
+			accountInDB.setSecondName(updateAcc.getSecondName());
+			accountInDB.setAccountNumber(updateAcc.getAccountNumber());
+			return "{\"message\": \"account successfully updated\"}";
+		}
+
+		return "{\"message\": \"account not found\"}";
 	}
 
 	private Account findAccount(Long id) {

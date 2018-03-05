@@ -2,7 +2,7 @@
 
 (function() {
 
-    var AccountController =  function(accountService, $log) {
+    var AccountController =  function(accountService, $log, $state) {
         
         var vm = this;
         
@@ -22,7 +22,21 @@
                 vm.error = true;
                 vm.errorMessage = error;
             });
+            init();
         };
+        
+        vm.updateAccount = function (fName, lName, accNo, accID) {
+            var obj = {
+                firstName : fName,
+                secondName : lName,
+                accountNumber : accNo,
+                id : accID
+            };
+
+            $log.log(obj);
+
+            $state.go('updateaccount', obj);
+        }
         
         function init() {
             accountService.getAccounts().then(function (results) {
@@ -39,5 +53,5 @@
             
     };
 
-    angular.module('accountApp').controller('accountController', ['accountService','$log', AccountController]);
+    angular.module('accountApp').controller('accountController', ['accountService','$log','$state', AccountController]);
 }());

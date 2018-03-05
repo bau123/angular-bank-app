@@ -1,12 +1,7 @@
 package com.qa.intergration;
 
 import javax.inject.Inject;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 
 import org.apache.log4j.Logger;
 
@@ -45,6 +40,14 @@ public class AccountEndpoint {
 
 	}
 
+	@Path("/json/")
+	@PUT
+	@Produces({ "application/json" })
+	public String updateAccount(String account) {
+		LOGGER.info("AccountEndpoint + updateAccount");
+		return service.updateAccount(account);
+
+	}
 	public void setService(AccountService service) {
 		LOGGER.info("AccountEndpoint + setService");
 		this.service = service;
